@@ -1,4 +1,4 @@
-/*public class Sudoku {
+public class Sudoku {
     public static void main(String[] args) {
         int[][] grid1 = {
                 {8, 3, 5, 4, 1, 6, 9, 2, 7},
@@ -23,7 +23,7 @@
                 {2, 3, 4, 5, 6, 7, 8, 9, 1}
         };
     }
-    private boolean columnConstraint(int[][]board, int column) {
+ /*   private boolean columnConstraint(int[][]board, int column) {
         boolean[]constraint = new boolean[BOARD__SIZE];
         return IntStream.range(BOARD__START__INDEX, BOARD__SIZE)
                 .allMatch(row -> checkConstraint(board, row, constraint, column));
@@ -85,5 +85,6 @@
         }
         return true;
     }
+    */
+
 }
-*/
