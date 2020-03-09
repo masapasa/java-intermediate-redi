@@ -1,3 +1,7 @@
+/*
+Write a Java program to display the first
+20 elements of the fibonacci series
+ */
 public class Fibonacci {
     public static void main(String[] args) {
 

@@ -1,3 +1,6 @@
+/*
+Write a Java program to encrypt strings using the Caesar cipher
+ */
 public class CaesarCipher {
     public static void main(String[] args) {
 

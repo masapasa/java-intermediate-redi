@@ -1,4 +1,9 @@
-public class Exercise4 {
+/*
+Write a Java program to create and display unique
+three-digit number using 1, 2, 3, 4.
+Repeating numbers are not allowed
+ */
+public class UniqueCombo {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4};
         printUnique(arr);

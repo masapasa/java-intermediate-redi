@@ -1,3 +1,6 @@
+/*
+A Java program that validates these two 9x9 sudoku grids.
+ */
 public class Sudoku {
     public static void main(String[] args) {
         int[][] grid1 = {

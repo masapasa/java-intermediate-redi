@@ -1,3 +1,6 @@
+/*
+Write a Java program and compute the sum of the digits of an integer
+ */
 public class SumOfDigits {
     public static void main(String[] args) {
         getSumOfDigits(25);
