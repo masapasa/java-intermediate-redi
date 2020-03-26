@@ -1,11 +1,17 @@
+import sun.tools.jstack.JStack;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 public class Student {
     String studentName;
     int age;
     boolean isStudentSingle;
     String city;
-    ArrayList<String> friends;
+    private ArrayList<Student> friends;
+    private Student bestFriend;
 
     public Student(String studentName, int age, boolean isStudentSingle, String city) {
         this.studentName = studentName;
@@ -15,11 +21,19 @@ public class Student {
         this.friends = new ArrayList<>();
     }
 
-    void addFriend(String friend) {
-        this.friends.add(friend);
+    void addFriend(Student friend) {
+        if (friend.studentName == this.studentName) {   //if (this.equals(friend))
+            System.out.println("I'm already friend of myself :)");
+        } else if (friends.contains(friend)) {
+            System.out.println("You have already friend " + friend.studentName);
+        } else {
+            this.friends.add(friend);
+            System.out.println("You added a new friend - " + friend.studentName);
+        }
     }
 
     public void introduce() {
+        System.out.println("*****************************");
         System.out.println("My name is " + studentName);
         System.out.println("I'm " + age + " years old");
         if (isStudentSingle) {
@@ -27,7 +41,12 @@ public class Student {
         } else {
             System.out.println("I'm in a relationship ^_^ ");
         }
-        System.out.println("My friends are: ");
-        friends.forEach(System.out::println);
+        System.out.print("My friends are: ");
+        for (Student str : friends) {
+            System.out.print(str.studentName + ", ");
+        }
+        System.out.println();
+        System.out.println("*****************************");
     }
 }
+
