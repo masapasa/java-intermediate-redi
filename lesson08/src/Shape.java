@@ -1,11 +1,17 @@
-import javax.crypto.spec.PSource;
+/*
+5 Math!
+Let's calulate the area of basic shapes. Write the following classes:
 
+Circle, Rectangle, Triangle
+All should receive the needed data, e.g. the radius of the circle, via a constructor
+All should have a method getArea which calulates the area of the shape
+ */
 public class Shape {
     String shapeName;
     double sideA;
     double sideB;
     double radius;
-    double square = 0;
+    private double square = 0;
 
     public Shape(String shapeName, double sideA, double sideB) {
         this.shapeName = shapeName;
@@ -18,15 +24,9 @@ public class Shape {
     }
 
     void getArea() {
-        if(this.shapeName == "Rectangle"){
-            square=sideA*sideB;
-        }
-        else if(this.shapeName == "Triangle"){
-            square=sideA*sideB;
-        }
-        else if (this.shapeName == "Circle"){
-            square=(radius*radius)*3.14;
-        }
+        if(this.shapeName == "Rectangle") square = sideA * sideB;
+        else if(this.shapeName == "Triangle") square = sideA * sideB;
+        else if (this.shapeName == "Circle") square = Math.pow(radius, 2) * 3.14;
         System.out.println(square);
     }
 }
