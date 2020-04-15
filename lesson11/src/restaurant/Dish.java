@@ -1,16 +1,30 @@
 package restaurant;
 
+import java.util.List;
+import java.util.Map;
+
 public abstract class Dish {
     private String name;
-    private String ingredients;
+    private List<String> ingredients;
     private double dishPrice;
     private boolean isVegetarian;
+    private boolean isVegan;
+    private boolean isGlutenFree;
 
-    public Dish(String name, String ingredients, double dishPrice, boolean isVegetarian) {
+    public Dish(String name, double dishPrice) {
+        this.name = name;
+        this.dishPrice = dishPrice;
+    }
+
+    public Dish(String name, List<String> ingredients, double dishPrice, boolean isVegetarian, boolean isVegan, boolean isGlutenFree) {
         this.name = name;
         this.ingredients = ingredients;
+        setIsVegetarian();
+
         this.dishPrice = dishPrice;
-        this.isVegetarian = isVegetarian;
+//        this.isVegetarian = isVegetarian;
+        this.isVegan = isVegan;
+        this.isGlutenFree = isGlutenFree;
     }
 
     public String getName() {
@@ -21,12 +35,8 @@ public abstract class Dish {
         this.name = name;
     }
 
-    public String getIngredients() {
+    public List<String> getIngredients() {
         return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
     }
 
     public double getDishPrice() {
@@ -41,7 +51,34 @@ public abstract class Dish {
         return isVegetarian;
     }
 
+    private void setIsVegetarian() {
+        this.isVegetarian = true;
+        Map<String, Ingredient> inventory = Inventory.getInventory();
+        for (String ingredient : ingredients) {
+            Ingredient ingredient1 = inventory.get(ingredient);
+            if (ingredient1.name.equals("meat")) {
+                this.isVegetarian = false;
+            }
+        }
+    }
+
     public void setVegetarian(boolean vegetarian) {
         isVegetarian = vegetarian;
+    }
+
+    public boolean isVegan() {
+        return isVegan;
+    }
+
+    public void setVegan(boolean vegan) {
+        isVegan = vegan;
+    }
+
+    public boolean isGlutenFree() {
+        return isGlutenFree;
+    }
+
+    public void setGlutenFree(boolean glutenFree) {
+        isGlutenFree = glutenFree;
     }
 }
