@@ -1,16 +1,28 @@
 package restaurant;
 
 public abstract class Ingredient {
-    String name;
-    int count;
+    private String name;
+
+    private int count;
 
     public Ingredient(String name, int count) {
         this.name = name;
         this.count = count;
     }
 
-    //    String avocado = "avocado";
-//    String onion = "onion";
-//    String tomatoes = "tomatoes";
-//    , jalapeno pepper, garlic, lime
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }

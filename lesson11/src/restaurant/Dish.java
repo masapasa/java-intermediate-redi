@@ -1,7 +1,9 @@
 package restaurant;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public abstract class Dish {
     private String name;
@@ -20,32 +22,11 @@ public abstract class Dish {
         this.name = name;
         this.ingredients = ingredients;
         setIsVegetarian();
-
         this.dishPrice = dishPrice;
-//        this.isVegetarian = isVegetarian;
         this.isVegan = isVegan;
         this.isGlutenFree = isGlutenFree;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public double getDishPrice() {
-        return dishPrice;
-    }
-
-    public void setDishPrice(double dishPrice) {
-        this.dishPrice = dishPrice;
-    }
 
     public boolean isVegetarian() {
         return isVegetarian;
@@ -54,10 +35,13 @@ public abstract class Dish {
     private void setIsVegetarian() {
         this.isVegetarian = true;
         Map<String, Ingredient> inventory = Inventory.getInventory();
+
         for (String ingredient : ingredients) {
             Ingredient ingredient1 = inventory.get(ingredient);
-            if (ingredient1.name.equals("meat")) {
-                this.isVegetarian = false;
+            if (ingredient1 != null) {
+                if (ingredient1.getName().equals("meat") || ingredient1.getName().equals("salmon") || ingredient1.getName().equals("egg")) {
+                    this.isVegetarian = false;
+                }
             }
         }
     }
@@ -80,5 +64,29 @@ public abstract class Dish {
 
     public void setGlutenFree(boolean glutenFree) {
         isGlutenFree = glutenFree;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public double getDishPrice() {
+        return dishPrice;
+    }
+
+    public void setDishPrice(double dishPrice) {
+        this.dishPrice = dishPrice;
     }
 }
