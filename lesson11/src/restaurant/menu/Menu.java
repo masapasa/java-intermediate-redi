@@ -1,4 +1,4 @@
-package restaurant;
+package restaurant.menu;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class Menu {
         printCategory(desserts);
     }
 
-    void printCategory(List<Dish> category) {
+    public void printCategory(List<Dish> category) {
         int i = 1;
         for (Dish dish : category) {
             System.out.println(i + ". " + dish.getName() + " ........... " + dish.getDishPrice() + " €");

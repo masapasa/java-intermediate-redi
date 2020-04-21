@@ -1,13 +1,14 @@
-package restaurant;
+package restaurant.menu;
 
-import java.util.HashSet;
+import restaurant.ingredient.Ingredient;
+import restaurant.ingredient.Inventory;
+
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public abstract class Dish {
     private String name;
-    private List<String> ingredients;
+    private List<Ingredient> ingredients;
     private double dishPrice;
     private boolean isVegetarian;
     private boolean isVegan;
@@ -18,13 +19,11 @@ public abstract class Dish {
         this.dishPrice = dishPrice;
     }
 
-    public Dish(String name, List<String> ingredients, double dishPrice, boolean isVegetarian, boolean isVegan, boolean isGlutenFree) {
+    public Dish(String name, List<Ingredient> ingredients, double dishPrice) {
         this.name = name;
         this.ingredients = ingredients;
         setIsVegetarian();
         this.dishPrice = dishPrice;
-        this.isVegan = isVegan;
-        this.isGlutenFree = isGlutenFree;
     }
 
 
@@ -36,10 +35,10 @@ public abstract class Dish {
         this.isVegetarian = true;
         Map<String, Ingredient> inventory = Inventory.getInventory();
 
-        for (String ingredient : ingredients) {
+        for (Ingredient ingredient : ingredients) {
             Ingredient ingredient1 = inventory.get(ingredient);
             if (ingredient1 != null) {
-                if (ingredient1.getName().equals("meat") || ingredient1.getName().equals("salmon") || ingredient1.getName().equals("egg")) {
+                if (ingredient1.getName().equals("meat")) {
                     this.isVegetarian = false;
                 }
             }
@@ -74,11 +73,11 @@ public abstract class Dish {
         this.name = name;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

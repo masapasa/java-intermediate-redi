@@ -1,16 +1,20 @@
-package restaurant;
+package restaurant.order;
+
+import restaurant.menu.Dish;
+import restaurant.menu.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Order {
-    List<Dish> selectedDishes = new ArrayList<>();
+
+    public List<Dish> selectedDishes = new ArrayList<>();
 
     public void makeOrder(Menu menu) {
         System.out.println("Hello! We're happy to see you!");
         System.out.println("What category do you want to order the dish from?");
-        System.out.println("1 - starters, 2 - main course or 3 - dessert");
+        System.out.println("1 - starters, 2 - main course, 3 - dessert or 4 - drinks");
         Scanner input = new Scanner(System.in);
         int cat = input.nextInt();
         boolean isOrderComplete = false;
@@ -38,16 +42,14 @@ public class Order {
                 isOrderComplete = true;
             } else {
                 System.out.println("What category do you want to order the dish from?");
-                System.out.println("1 - starters, 2 - main course or 3 - dessert");
+                System.out.println("1 - starters, 2 - main course, 3 - dessert or 4 - drinks");
                 cat = input.nextInt();
             }
-
         }
         System.out.println("You ordered: ");
         for (Dish orderedDish : selectedDishes) {
             System.out.println(orderedDish.getName());
         }
-
     }
 
     public void selectDishes(List<Dish> categories) {
@@ -61,8 +63,18 @@ public class Order {
             System.out.println(selectedDish.getName());
             System.out.println("Would you like something else? Answer Y(yes) or N(no)");
             String answer = input.next();
-            if (answer.equals("n")){isContinue = false;}
+            if (answer.equals("n")) {
+                isContinue = false;
+            }
         }
+    }
+
+    public List<Dish> getSelectedDishes() {
+        return selectedDishes;
+    }
+
+    public void setSelectedDishes(List<Dish> selectedDishes) {
+        this.selectedDishes = selectedDishes;
     }
 }
 

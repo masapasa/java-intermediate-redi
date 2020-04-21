@@ -1,8 +1,11 @@
-package restaurant;
+package restaurant.order;
+
+import restaurant.menu.Dish;
+import restaurant.order.Order;
 
 public class Bill {
 
-    void printBill(Order order){
+    public void printBill(Order order){
         System.out.println();
         System.out.println("Your bill:");
         double sum = 0;

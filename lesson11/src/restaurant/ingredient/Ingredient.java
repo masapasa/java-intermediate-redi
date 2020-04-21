@@ -1,4 +1,4 @@
-package restaurant;
+package restaurant.ingredient;
 
 public abstract class Ingredient {
     private String name;

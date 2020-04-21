@@ -1,4 +1,4 @@
-package restaurant;
+package restaurant.menu;
 
 public class Drink extends Dish {
     public Drink(String name, double dishPrice) {
