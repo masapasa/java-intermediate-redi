@@ -2,7 +2,6 @@ package restaurant.ingredient;
 
 public abstract class Ingredient {
     private String name;
-
     private int count;
 
     public Ingredient(String name, int count) {

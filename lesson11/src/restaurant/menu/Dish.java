@@ -23,12 +23,9 @@ public abstract class Dish {
         this.name = name;
         this.ingredients = ingredients;
         setIsVegetarian();
+        setIsVegan();
+        setIsGlutenFree();
         this.dishPrice = dishPrice;
-    }
-
-
-    public boolean isVegetarian() {
-        return isVegetarian;
     }
 
     private void setIsVegetarian() {
@@ -44,6 +41,36 @@ public abstract class Dish {
             }
         }
     }
+
+    private void setIsVegan() {
+        this.isVegan = true;
+        Map<String, Ingredient> inventory = Inventory.getInventory();
+
+        for (Ingredient ingredient : ingredients) {
+            Ingredient ingredient1 = inventory.get(ingredient);
+            if (ingredient1 != null) {
+                if (ingredient1.getName().equals("meat")) {
+                    this.isVegan = false;
+                }
+            }
+        }
+    }
+
+    private void setIsGlutenFree() {
+        this.isGlutenFree = true;
+        Map<String, Ingredient> inventory = Inventory.getInventory();
+
+        for (Ingredient ingredient : ingredients) {
+            Ingredient ingredient1 = inventory.get(ingredient);
+            if (ingredient1 != null) {
+                if (ingredient1.getName().equals("glutenIn")) {
+                    this.isGlutenFree = false;
+                }
+            }
+        }
+    }
+
+    public boolean isVegetarian() { return isVegetarian; }
 
     public void setVegetarian(boolean vegetarian) {
         isVegetarian = vegetarian;

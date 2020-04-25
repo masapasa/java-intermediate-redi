@@ -1,10 +1,5 @@
 package restaurant.ingredient;
 
-import restaurant.ingredient.AnotherIngredient;
-import restaurant.ingredient.Ingredient;
-import restaurant.ingredient.Meat;
-import restaurant.ingredient.Vegetables;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +14,7 @@ public class Inventory {
     private void init() {
         Ingredient meat = new Meat("meat", 10);
         Ingredient vegetables = new Vegetables("vegetables", 20);
-        Ingredient another = new AnotherIngredient("another", 30);
+        Ingredient glutenIn = new GlutenIngredient("another", 30);
 
         inventory.put("avocado", vegetables);
         inventory.put("onion", vegetables);
@@ -44,10 +39,10 @@ public class Inventory {
         inventory.put("mascarpone", meat);
         inventory.put("ricotta", meat);
         inventory.put("yoghurt", meat);
-        inventory.put("bread", another);
-        inventory.put("nudels", another);
-        inventory.put("espresso", another);
-        inventory.put("cookies", another);
+        inventory.put("bread", glutenIn);
+        inventory.put("nudels", glutenIn);
+        inventory.put("espresso", glutenIn);
+        inventory.put("cookies", glutenIn);
 
     }
 

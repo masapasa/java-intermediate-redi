@@ -59,8 +59,8 @@ public class Main {
         Order order = new Order();
         order.makeOrder(menu);
 
-        Bill myBill = new Bill();
-        myBill.printBill(order);
+        Bill myBill = new Bill(order);
+        myBill.printBill();
 
     }
 }
