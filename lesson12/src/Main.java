@@ -3,8 +3,6 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-
-
         Set<Integer> set1 = new HashSet();
         Set<Integer> set2 = new HashSet();
         set1.add(1);
@@ -113,7 +111,7 @@ public class Main {
         return result;
     }
 
-    //Exercise 6  difference between two sets given by parameters
+//Exercise 6  difference between two sets given by parameters
     private static Set<Integer> difference(Set<Integer> set1, Set<Integer> set2) {
         Set<Integer> result = new HashSet<>();
         for (Integer i : set1) {
@@ -124,8 +122,7 @@ public class Main {
         return result;
     }
 
-
-    //Exercise 5    returns an union of two sets given by parameters
+//Exercise 5    returns an union of two sets given by parameters
     private static Set<Integer> union(Set<Integer> set1, Set<Integer> set2) {
         Set<Integer> result = new HashSet<>();
         result.addAll(set1);
@@ -133,7 +130,7 @@ public class Main {
         return result;
     }
 
-    //Exercise 4   returns an intersection of two sets given by parameters
+//Exercise 4   returns an intersection of two sets given by parameters
     private static Set<Integer> intersection(Set<Integer> set1, Set<Integer> set2) {
         Set<Integer> result = new HashSet<>();
         for (Integer i : set1) {
