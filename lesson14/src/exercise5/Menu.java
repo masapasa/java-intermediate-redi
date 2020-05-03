@@ -2,6 +2,10 @@ package exercise5;
 
 import java.util.HashMap;
 import java.util.Map;
+//Exercise 5
+//Write a method program that contains a pizza menu - we are interested only in pizza name and it's price.
+//For simplification we can assume that all pizzas are sold in the same size and price is an Integer.
+//Write a method that takes how much money there is in your wallet and it returns Map of pizzas and their prices, that you can afford
 
 public class Menu {
 
@@ -30,5 +34,4 @@ public class Menu {
         }
         return result;
     }
-
 }

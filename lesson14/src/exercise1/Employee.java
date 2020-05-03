@@ -2,8 +2,15 @@ package exercise1;
 
 import java.util.HashMap;
 import java.util.TreeMap;
+//Exercise 1
+//Make a Map that associates the following employee IDs with names.
+//Keys and values of Maps can be any Object type, so in real life you would probably have the key be a String
+// and the associated value be a Person or Employee object.
+// To make things simpler on this exercise, you can use String for both the ID and the name,
+// rather than bothering to create a Person or Employee class.
+//The point here is to associate keys with values, then retrieve values later based on keys.
 
-public class Main {
+public class Employee {
 
     public static void main(String[] args) {
         System.out.println("************HashMap************");

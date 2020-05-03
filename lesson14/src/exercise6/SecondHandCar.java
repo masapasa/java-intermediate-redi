@@ -3,7 +3,9 @@ package exercise6;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+//Exercise 6
+//Write a program that calculates average price of a second hand car based on the list of prices found on EBay.
+//The method should return a map where key is a car name and value is a average price
 
 public class SecondHandCar {
     static HashMap<String, List<Integer>> cars = new HashMap<>();

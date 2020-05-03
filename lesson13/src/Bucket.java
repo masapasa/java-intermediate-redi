@@ -4,13 +4,17 @@ import java.util.List;
 public class Bucket {
     private final List<Point> items = new ArrayList<>();
 
-    boolean contains(Point point) {
+    public boolean contains(Point point) {
         for (Point item : items) {
             if (item.equals(point)) {
+                System.out.println("You already have this point");
                 return true;
+            } else if(!item.equals(point)){
+                System.out.println("This point is not found");
             }
         }
-        return false;
+                return false;       //результатом метода всегда будет false?
+
     }
 
     public void add(Point point) {

@@ -1,8 +1,12 @@
 package exercise2;
 
 import java.util.HashMap;
+//Exercise 2
+//Go back to the previous problem and make your lookup method work with keys regardless of whether they are lower or uppercase.
+// For example, both “a1234” and “A1234” should match Steve Jobs. Hint:
+// very similar to the previous exercise, so if your solution is complex, you are overlooking the obvious.
 
-public class Main {
+public class Uppercase {
     static HashMap<String, String> employees = new HashMap<>();
 
     public static void main(String[] args) {

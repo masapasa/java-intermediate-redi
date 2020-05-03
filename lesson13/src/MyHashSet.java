@@ -28,14 +28,15 @@ public class MyHashSet {
         }
     }
 
-    boolean contains(Point point) {
+    public boolean contains(Point point) {
         Bucket bucket = buckets.get(point.hashCode());
         if (!bucket.contains(point)) {
             System.out.println("You already have this point");
+            return true;
         } else {
             System.out.println("This point is not found");
+            return false;
         }
-        return false;
     }
 
     public int size() {

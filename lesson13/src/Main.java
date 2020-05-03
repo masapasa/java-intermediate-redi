@@ -6,7 +6,6 @@ public class Main {
     private static Point point;
 
     public static void main(String[] args) {
-        System.out.println("*********************");
         Point point1 = new Point(3, 4);
         Point point2 = new Point(3, 4);
         Point point3 = new Point(2, 5);
@@ -20,6 +19,7 @@ public class Main {
         bucket.contains(point2);
         bucket.size();
 
+        System.out.println("*********************");
         bucket.contains(point1);
         bucket.contains(point2);
         bucket.contains(point3);
@@ -38,12 +38,12 @@ public class Main {
 
 
 
-//        System.out.println(point1.equals(point2));
-//        System.out.println(point1 == point2);
-//        System.out.println(point1.equals(point1));
-//        System.out.println(point1.equals(point4));
-//        System.out.println(point1 == point1);
-//        System.out.println(point1 == point4);
-//        System.out.println(point1.equals(point3));
+        System.out.println(point1.equals(point2));
+        System.out.println(point1 == point2);
+        System.out.println(point1.equals(point1));
+        System.out.println(point1.equals(point4));
+        System.out.println(point1 == point1);
+        System.out.println(point1 == point4);
+        System.out.println(point1.equals(point3));
     }
 }
