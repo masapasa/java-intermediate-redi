@@ -2,7 +2,7 @@ public class Payment {
     private int id;
     private double amount;
     private Category category;
-    private int month;
+    private Integer month;
     private int year;
 
     @Override
@@ -16,34 +16,47 @@ public class Payment {
                 '}';
     }
 
-    public String month (int mon){
+    public String month (Integer mon) {
         String monthString;
         switch (mon) {
-            case 1:  monthString = "January";
+            case 1:
+                monthString = "January";
                 break;
-            case 2:  monthString = "February";
+            case 2:
+                monthString = "February";
                 break;
-            case 3:  monthString = "March";
+            case 3:
+                monthString = "March";
                 break;
-            case 4:  monthString = "April";
+            case 4:
+                monthString = "April";
                 break;
-            case 5:  monthString = "May";
+            case 5:
+                monthString = "May";
                 break;
-            case 6:  monthString = "June";
+            case 6:
+                monthString = "June";
                 break;
-            case 7:  monthString = "July";
+            case 7:
+                monthString = "July";
                 break;
-            case 8:  monthString = "August";
+            case 8:
+                monthString = "August";
                 break;
-            case 9:  monthString = "September";
+            case 9:
+                monthString = "September";
                 break;
-            case 10: monthString = "October";
+            case 10:
+                monthString = "October";
                 break;
-            case 11: monthString = "November";
+            case 11:
+                monthString = "November";
                 break;
-            case 12: monthString = "December";
+            case 12:
+                monthString = "December";
                 break;
-            default: monthString = "Invalid month";
+            default:
+                monthString = "Invalid month";
                 break;
         }
         return monthString;
@@ -56,11 +69,6 @@ public class Payment {
         this.month = month;
         this.year = year;
     }
-
-//public String toString(){
-//        return "Payment: id = " + this.id + "amount = " + this.amount + " category = ";
-//}
-
 
     public int getId() {
         return id;
@@ -86,11 +94,11 @@ public class Payment {
         this.category = category;
     }
 
-    public int getMonth() {
+    public Integer getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(Integer month) {
         this.month = month;
     }
 

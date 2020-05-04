@@ -6,7 +6,7 @@ public class Bank {
     //add some payments in our bank
     public void addPayment(Payment payment) {
         payments.add(payment);
-        System.out.println("Transaction: " + payment.getAmount());
+//        System.out.println("Transaction: " + payment.getAmount());
     }
 
     //Show the user their the most expensive payment
@@ -61,8 +61,9 @@ public class Bank {
                 "1 - My biggest payment\n" +
                         "2 - My total income\n" +
                         "3 - How do I spend my money\n" +
-                        "0 - exit");
-
+                        "4 - Statistics for 1 year\n" +
+                        "0 - exit\n");
+        System.out.print("User's input> ");
         int cat = input.nextInt();
         boolean isContinue = true;
         while (isContinue) {
@@ -72,13 +73,20 @@ public class Bank {
                 totalIncome();
             } else if (cat == 3) {
                 alphGrouping();
+            } else if (cat == 4) {
+                System.out.println("Enter a year:");
+                cat = input.nextInt();
+                totalSpendingByYear(cat);
             } else if (cat == 0) {
-                System.out.println("See you next time :)");
+                System.out.println("See you next time :)\n");
                 isContinue = false;
             } else {
-                System.out.println("Please clarify your answer");
+                System.out.println("Please clarify your answer\n");
             }
-            cat = input.nextInt();
+            if (cat != 0) {
+                System.out.print("User's input> ");
+                cat = input.nextInt();
+            }
         }
     }
 
@@ -115,8 +123,8 @@ public class Bank {
         HashMap<Integer, Double> earnings = new HashMap<>();
         for (Payment payment : payments) {
             Integer month = payment.getMonth();
+            Date key = new GregorianCalendar(payment.getYear(), payment.getMonth() - 1, 0).getTime();
             if (payment.getAmount() >= 0) {
-                Date key = new GregorianCalendar(payment.getYear(), payment.getMonth() - 1, 0).getTime();
                 if (earnings.containsKey(month)) {
                     Double currentSum = earnings.get(month) + payment.getAmount();
                     earnings.put(month, currentSum);
@@ -183,5 +191,54 @@ public class Bank {
                 break;
         }
         return monthString;
+    }
+//Show the user their spendings & earnings grouped by month during chosen year, chronologically ordered. Make sure that you print the month even if there are no payments. For that you will need to make the bank terminal menu more interactive:
+//
+//> Enter what statistics you want to see:
+//1 - My biggest payment
+//2 - My total income
+//3 - How do I spend my money
+//4 - Statistics for 1 year
+//0 - exit
+//
+//User's input> 4
+//
+//> Enter a year:
+//
+//User's input> 2018
+//
+//In January 2018 you spent: 143$ and earned: 2300$
+//In February 2018 you spent: 260$ and earned: 2300$
+//In March 2018 you spent: 0$ and earned: 2300$
+//In April 2018 you spent: 107$ and earned: 2500$
+
+    public void totalSpendingByYear(int year) {
+
+        HashMap<Integer, Double> spendings = new HashMap<>();
+        HashMap<Integer, Double> earnings = new HashMap<>();
+        for (Payment payment : payments) {
+            Integer month = payment.getMonth();
+            Date key = new GregorianCalendar(year, payment.getMonth() - 1, 0).getTime();
+            if (payment.getYear() == year) {
+                if (payment.getAmount() >= 0) {
+                    if (earnings.containsKey(month)) {
+                        Double currentSum = earnings.get(month) + payment.getAmount();
+                        earnings.put(month, currentSum);
+                    } else {
+                        earnings.put(month, payment.getAmount());
+                    }
+                } else {
+                    if (spendings.containsKey(month)) {
+                        Double currentSum = spendings.get(month);
+                        currentSum += payment.getAmount();
+                        spendings.put(month, currentSum);
+                    } else {
+                        spendings.put(month, payment.getAmount());
+                    }
+                }
+            System.out.println("In " + month(month) + " " + year +  " you spent: " + spendings.getOrDefault(month, 0d) + "€" + " and earned: " + earnings.getOrDefault(month, 0d) + "€");
+            }
+        }
+
     }
 }
