@@ -116,6 +116,7 @@ public class Bank {
         for (Payment payment : payments) {
             Integer month = payment.getMonth();
             if (payment.getAmount() >= 0) {
+                Date key = new GregorianCalendar(payment.getYear(), payment.getMonth() - 1, 0).getTime();
                 if (earnings.containsKey(month)) {
                     Double currentSum = earnings.get(month) + payment.getAmount();
                     earnings.put(month, currentSum);
@@ -131,12 +132,9 @@ public class Bank {
                     spendings.put(month, payment.getAmount());
                 }
             }
-
         }
         for (int i = 1; i <= 12; i++) {
             System.out.println("In " + month(i) + " you spent: " + spendings.getOrDefault(i, 0d) + "€" + " and earned: " + earnings.getOrDefault(i, 0d) + "€");
-
-
         }
     }
 
