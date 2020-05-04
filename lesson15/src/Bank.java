@@ -63,29 +63,33 @@ public class Bank {
                         "3 - How do I spend my money\n" +
                         "4 - Statistics for 1 year\n" +
                         "0 - exit\n");
-        System.out.print("User's input> ");
-        int cat = input.nextInt();
         boolean isContinue = true;
         while (isContinue) {
-            if (cat == 1) {
-                biggestPayment();
-            } else if (cat == 2) {
-                totalIncome();
-            } else if (cat == 3) {
-                alphGrouping();
-            } else if (cat == 4) {
-                System.out.println("Enter a year:");
-                cat = input.nextInt();
-                totalSpendingByYear(cat);
-            } else if (cat == 0) {
-                System.out.println("See you next time :)\n");
-                isContinue = false;
-            } else {
-                System.out.println("Please clarify your answer\n");
-            }
-            if (cat != 0) {
-                System.out.print("User's input> ");
-                cat = input.nextInt();
+
+            System.out.print("User's input> ");
+            int cat = input.nextInt();
+
+            switch (cat) {
+                case 1:
+                    biggestPayment();
+                    break;
+                case 2:
+                    totalIncome();
+                    break;
+                case 3:
+                    alphGrouping();
+                    break;
+                case 4:
+                    System.out.println("Enter a year:");
+                    cat = input.nextInt();
+                    totalSpendingByYear(cat);
+                    break;
+                case 0:
+                    System.out.println("See you next time :)\n");
+                    isContinue = false;
+                    break;
+                default:
+                    System.out.println("Please clarify your answer\n");
             }
         }
     }
@@ -142,78 +146,12 @@ public class Bank {
             }
         }
         for (int i = 1; i <= 12; i++) {
-            System.out.println("In " + month(i) + " you spent: " + spendings.getOrDefault(i, 0d) + "€" + " and earned: " + earnings.getOrDefault(i, 0d) + "€");
+            System.out.println("In " + DateUtils.month(i) + " you spent: " + spendings.getOrDefault(i, 0d) + "€" + " and earned: " + earnings.getOrDefault(i, 0d) + "€");
         }
     }
 
-    //converts month index to it's name
-    public String month(int mon) {
-        String monthString;
-        switch (mon) {
-            case 1:
-                monthString = "January";
-                break;
-            case 2:
-                monthString = "February";
-                break;
-            case 3:
-                monthString = "March";
-                break;
-            case 4:
-                monthString = "April";
-                break;
-            case 5:
-                monthString = "May";
-                break;
-            case 6:
-                monthString = "June";
-                break;
-            case 7:
-                monthString = "July";
-                break;
-            case 8:
-                monthString = "August";
-                break;
-            case 9:
-                monthString = "September";
-                break;
-            case 10:
-                monthString = "October";
-                break;
-            case 11:
-                monthString = "November";
-                break;
-            case 12:
-                monthString = "December";
-                break;
-            default:
-                monthString = "Invalid month";
-                break;
-        }
-        return monthString;
-    }
-//Show the user their spendings & earnings grouped by month during chosen year, chronologically ordered. Make sure that you print the month even if there are no payments. For that you will need to make the bank terminal menu more interactive:
-//
-//> Enter what statistics you want to see:
-//1 - My biggest payment
-//2 - My total income
-//3 - How do I spend my money
-//4 - Statistics for 1 year
-//0 - exit
-//
-//User's input> 4
-//
-//> Enter a year:
-//
-//User's input> 2018
-//
-//In January 2018 you spent: 143$ and earned: 2300$
-//In February 2018 you spent: 260$ and earned: 2300$
-//In March 2018 you spent: 0$ and earned: 2300$
-//In April 2018 you spent: 107$ and earned: 2500$
-
+    //Show the user their spendings & earnings grouped by month during chosen year, chronologically ordered. Make sure that you print the month even if there are no payments. For that you will need to make the bank terminal menu more interactive:
     public void totalSpendingByYear(int year) {
-
         HashMap<Integer, Double> spendings = new HashMap<>();
         HashMap<Integer, Double> earnings = new HashMap<>();
         for (Payment payment : payments) {
@@ -236,9 +174,15 @@ public class Bank {
                         spendings.put(month, payment.getAmount());
                     }
                 }
-            System.out.println("In " + month(month) + " " + year +  " you spent: " + spendings.getOrDefault(month, 0d) + "€" + " and earned: " + earnings.getOrDefault(month, 0d) + "€");
             }
         }
-
+        for (int i = 1; i <= 12; i++) {
+            Double spent = spendings.get(i);
+            Double earned = earnings.get(i);
+            if (spent != null || earned != null) {
+                System.out.println("In " + DateUtils.month(i) + " " + year + " you spent: " + spendings.getOrDefault(i, 0d) + "€" + " and earned: " + earnings.getOrDefault(i, 0d) + "€");
+            }
+        }
     }
+
 }
