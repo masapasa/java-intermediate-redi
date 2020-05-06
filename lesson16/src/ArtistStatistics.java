@@ -16,24 +16,16 @@ public class ArtistStatistics {
     }
 
     //Who is my top fan? (Most played tracks)
-    public void getTopFan(User user) {
-        String favTrack = null;
-
-        for (Track track : artistFan.values()) {
-            int maxTrackPlays = 0;
-            if (favTrack == null || favTrack != track.getName()) {
-                favTrack = track.getName();
-            } else if (favTrack == track.getName()) {
-                maxTrackPlays++;
+    public User getTopFan() {
+        int max = 0;
+        User topFan = null;
+        for (Map.Entry<User, Integer> entry : trackPlays.entrySet()) {
+            if(entry.getValue() > max){
+                max = entry.getValue();
+                topFan = entry.getKey();
             }
-
         }
-
-
-//        Loop over trackPlays map and find the Maximum integer.
-//                Return the user of the maximum integer.
-//        useful functions:
-//        Map.keySet() =>returns all keys of the map
+        return topFan;
     }
 
     public int getDifferentUserCount() {
